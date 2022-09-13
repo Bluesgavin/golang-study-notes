@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Go程 / Gorouttine | Go 语言学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/golang-study-notes/assets/css/0.styles.25ede89d.css" as="style"><link rel="preload" href="/golang-study-notes/assets/js/app.00d359e2.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/2.3c2e6582.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/9.af316f4c.js" as="script"><link rel="prefetch" href="/golang-study-notes/assets/js/10.f9bcd7a9.js"><link rel="prefetch" href="/golang-study-notes/assets/js/11.06ecc038.js"><link rel="prefetch" href="/golang-study-notes/assets/js/12.959f2950.js"><link rel="prefetch" href="/golang-study-notes/assets/js/13.6cac2130.js"><link rel="prefetch" href="/golang-study-notes/assets/js/3.ab767734.js"><link rel="prefetch" href="/golang-study-notes/assets/js/4.da8b72e6.js"><link rel="prefetch" href="/golang-study-notes/assets/js/5.048c6337.js"><link rel="prefetch" href="/golang-study-notes/assets/js/6.29f38f88.js"><link rel="prefetch" href="/golang-study-notes/assets/js/7.687721e6.js"><link rel="prefetch" href="/golang-study-notes/assets/js/8.9dc7e7ef.js">
+    <link rel="stylesheet" href="/golang-study-notes/assets/css/0.styles.25ede89d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/golang-study-notes/" class="home-link router-link-active"><!----> <span class="site-name">Go 语言学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/dataTypes/" class="sidebar-heading clickable"><span>数据类型</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/dataTypes/Array.html" class="sidebar-link">数组/Array</a></li><li><a href="/golang-study-notes/dataTypes/Slice.html" class="sidebar-link">切片/Slice</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/concurrency/" class="sidebar-heading clickable router-link-active open"><span>并发</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/concurrency/Goroutine.html" aria-current="page" class="active sidebar-link">Go程 / Gorouttine</a></li><li><a href="/golang-study-notes/concurrency/Channels.html" class="sidebar-link">信道 / Channels</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="go程-gorouttine"><a href="#go程-gorouttine" class="header-anchor">#</a> Go程 / Gorouttine</h1> <p>Go 程（goroutine）是由 Go 运行时管理的轻量级线程。</p> <p>写法为：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">go</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token punctuation">)</span>
+</code></pre></div><p>运行时，会启动一个新的 Go 程并执行</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;time&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">say</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Millisecond<span class="token punctuation">)</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">go</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token string">&quot;world&quot;</span><span class="token punctuation">)</span>
+	<span class="token function">say</span><span class="token punctuation">(</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 输出结果</span>
+<span class="token comment">// 分别打印5次 hello 和 world，但由于操作系统的打印输出每次只能输出一个，因此看起来像是先后打印。但实际上两者应该是几乎同时打印的。</span>
+
+<span class="token comment">//world</span>
+<span class="token comment">//hello</span>
+<span class="token comment">//hello</span>
+<span class="token comment">//world</span>
+<span class="token comment">//world</span>
+<span class="token comment">//hello</span>
+<span class="token comment">//hello</span>
+<span class="token comment">//world</span>
+<span class="token comment">//world</span>
+<span class="token comment">//hello</span>
+</code></pre></div><h2 id="访问冲突"><a href="#访问冲突" class="header-anchor">#</a> 访问冲突</h2> <p>由于协程运行在相同的内存地址中，因此当两个协程用到相同的变量时，有可能会出现访问问题。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">say</span><span class="token punctuation">(</span> x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">go</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在这段代码中，say函数运行在一个新的Go程中。但1，2，3这几个变量在主 Go 程中。如果想要在say中正常访问这些变量，需要保证这些访问是同步的。在GO中提供了 sync 包解决，但也有一个更常用的方式—— 信道(Channels)</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/golang-study-notes/dataTypes/Slice.html" class="prev">
+        切片/Slice
+      </a></span> <span class="next"><a href="/golang-study-notes/concurrency/Channels.html">
+        信道 / Channels
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/golang-study-notes/assets/js/app.00d359e2.js" defer></script><script src="/golang-study-notes/assets/js/2.3c2e6582.js" defer></script><script src="/golang-study-notes/assets/js/9.af316f4c.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>信道 / Channels | Go 语言学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/golang-study-notes/assets/css/0.styles.25ede89d.css" as="style"><link rel="preload" href="/golang-study-notes/assets/js/app.00d359e2.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/2.3c2e6582.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/8.9dc7e7ef.js" as="script"><link rel="prefetch" href="/golang-study-notes/assets/js/10.f9bcd7a9.js"><link rel="prefetch" href="/golang-study-notes/assets/js/11.06ecc038.js"><link rel="prefetch" href="/golang-study-notes/assets/js/12.959f2950.js"><link rel="prefetch" href="/golang-study-notes/assets/js/13.6cac2130.js"><link rel="prefetch" href="/golang-study-notes/assets/js/3.ab767734.js"><link rel="prefetch" href="/golang-study-notes/assets/js/4.da8b72e6.js"><link rel="prefetch" href="/golang-study-notes/assets/js/5.048c6337.js"><link rel="prefetch" href="/golang-study-notes/assets/js/6.29f38f88.js"><link rel="prefetch" href="/golang-study-notes/assets/js/7.687721e6.js"><link rel="prefetch" href="/golang-study-notes/assets/js/9.af316f4c.js">
+    <link rel="stylesheet" href="/golang-study-notes/assets/css/0.styles.25ede89d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/golang-study-notes/" class="home-link router-link-active"><!----> <span class="site-name">Go 语言学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/dataTypes/" class="sidebar-heading clickable"><span>数据类型</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/dataTypes/Array.html" class="sidebar-link">数组/Array</a></li><li><a href="/golang-study-notes/dataTypes/Slice.html" class="sidebar-link">切片/Slice</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/concurrency/" class="sidebar-heading clickable router-link-active open"><span>并发</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/concurrency/Goroutine.html" class="sidebar-link">Go程 / Gorouttine</a></li><li><a href="/golang-study-notes/concurrency/Channels.html" aria-current="page" class="active sidebar-link">信道 / Channels</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="信道-channels"><a href="#信道-channels" class="header-anchor">#</a> 信道 / Channels</h1> <p>信道是一个类型管道，你可以用操作符 <code>&lt;-</code>,实现数据的发送和接受。</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 发送v 到ch 信道</span>
+ch <span class="token operator">&lt;-</span> v 
+<span class="token comment">// 声明变量v，值从信道ch中获得</span>
+v <span class="token operator">:=</span> <span class="token operator">&lt;-</span>ch
+</code></pre></div><p>观察上述代码可以发现，数据的方向也就是操作符箭头的方向。</p> <p>信道也可用用<code>make</code>创建</p> <div class="language-go extra-class"><pre class="language-go"><code>ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+</code></pre></div><p>默认情况下，信道会等数据完成之后才开始发送或接受。这样就可以免去开发者，手动编写控制锁或者条件语句。</p> <h2 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h2> <p>假如现在存在一个切片s，需要分别计算它前后一半的数值总和。我们用两个GO程来实现</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+
+<span class="token keyword">func</span> <span class="token function">sum</span><span class="token punctuation">(</span>s <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> c <span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	sum <span class="token operator">:=</span> <span class="token number">0</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+		sum <span class="token operator">+=</span> v
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+	c <span class="token operator">&lt;-</span> sum <span class="token comment">// 将和送入 c</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	s <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span>
+
+	c <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token punctuation">)</span>
+	<span class="token keyword">go</span> <span class="token function">sum</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token function">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+	<span class="token keyword">go</span> <span class="token function">sum</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token function">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+	x<span class="token punctuation">,</span> y <span class="token operator">:=</span> <span class="token operator">&lt;-</span>c<span class="token punctuation">,</span> <span class="token operator">&lt;-</span>c <span class="token comment">// 从 c 中接收</span>
+
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token operator">+</span>y<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>输出结果:</p> <div class="language- extra-class"><pre class="language-text"><code>-9
+4
+0
+[-9 4 0]
+7
+2
+8
+[7 2 8]
+-5 17 12
+</code></pre></div><p>可以看到，尽管我们用了GO程，但输出的结果顺序如在同一个协程一样。
+因为的第一次执行sum时，程序发现信道需要写入。因此会等第一次sum执行完之后，才开始执行第二次的sum。因此在这个例子中，虽然我们用了两个GO 程，但实际程序运行时，并没有分别同时执行2个sum。</p> <h2 id="关闭信道"><a href="#关闭信道" class="header-anchor">#</a> 关闭信道</h2> <p>通道本身并不提供关闭通道的方法，而是通过系统内置的close()方法关闭通道。在通道关闭后再继续往通道写数据会引发panic错误，而读数据则可以持续读取到通道中没有值为止，读取通道支持多参数返回，其中第一个参数表示从通道中读出的值，第二个参数表示是否正确读出数据，在通道关闭的情况下会返回false，可以借此判断通道是否已经关闭</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+	<span class="token comment">// 创建一个通道</span>
+	msgChan <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+
+	<span class="token comment">// 先往通道写入一条记录</span>
+	msgChan <span class="token operator">&lt;-</span> <span class="token string">&quot;a normal message&quot;</span>
+	
+	<span class="token comment">// 关闭通道</span>
+	<span class="token function">close</span><span class="token punctuation">(</span>msgChan<span class="token punctuation">)</span>
+
+	<span class="token comment">// 持续从通道中读取数据，ok值为false时，表示通道已经关闭且没有数据</span>
+	<span class="token keyword">for</span> <span class="token punctuation">{</span>
+		msg<span class="token punctuation">,</span> ok<span class="token operator">:=</span> <span class="token operator">&lt;-</span>msgChan
+		<span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;chan already closed&quot;</span><span class="token punctuation">)</span>
+			<span class="token keyword">return</span>
+		<span class="token punctuation">}</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;message: %s\n&quot;</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="单向信道"><a href="#单向信道" class="header-anchor">#</a> 单向信道</h2> <p>正常情况下，信道是双向的，既可读也可用写。但出于安全考虑，在某些情况下，我们可能会用到单向的信道。单向可以由双向通道转换，但不能转换回双向通道。
+它的定义方式如下：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">//定义只读通道：</span>
+<span class="token keyword">var</span> <span class="token operator">&lt;-</span><span class="token keyword">chan</span> <span class="token punctuation">{</span>通道类型<span class="token punctuation">}</span>
+<span class="token comment">//定义只写通道：</span>
+<span class="token keyword">var</span> <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token punctuation">{</span>通道类型<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/golang-study-notes/concurrency/Goroutine.html" class="prev">
+        Go程 / Gorouttine
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/golang-study-notes/assets/js/app.00d359e2.js" defer></script><script src="/golang-study-notes/assets/js/2.3c2e6582.js" defer></script><script src="/golang-study-notes/assets/js/8.9dc7e7ef.js" defer></script>
+  </body>
+</html>
