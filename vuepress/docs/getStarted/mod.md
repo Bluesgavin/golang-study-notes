@@ -1,4 +1,4 @@
-# 模块管理 / module maintenance
+# 模块管理/module maintenance
 前面说到了package是 Go 中的一个基础单位。但当我们开发一个应用时，一定会用到很多 package，此时，如果管理 package 就成了一个问题了。
 
 ## go mod

@@ -1,7 +1,8 @@
 module.exports = {
   base: '/golang-study-notes/',
-  title: 'Go 语言学习笔记',
-  description: 'Just playing around',
+  title: 'Go语言学习笔记',
+  description: 'Go 语言学习笔记',
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
     sidebar: [
       {
@@ -35,8 +36,13 @@ module.exports = {
         children: [
           '/dataTypes/Integer.md',
           '/dataTypes/Float.md',
+          '/dataTypes/ComplexNumbers.md',
+          '/dataTypes/Boolean.md',
+          '/dataTypes/Strings.md',
           '/dataTypes/Array.md',
           '/dataTypes/Slice.md',
+          '/dataTypes/Map.md',
+
         ],
       },
       {
