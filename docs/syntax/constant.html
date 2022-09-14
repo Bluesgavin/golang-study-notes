@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>常量/Constant | Go 语言学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/golang-study-notes/assets/css/0.styles.cf422793.css" as="style"><link rel="preload" href="/golang-study-notes/assets/js/app.2cd4efd2.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/2.3c2e6582.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/21.853ef5c6.js" as="script"><link rel="prefetch" href="/golang-study-notes/assets/js/10.dfb53353.js"><link rel="prefetch" href="/golang-study-notes/assets/js/11.06ecc038.js"><link rel="prefetch" href="/golang-study-notes/assets/js/12.f6d504e0.js"><link rel="prefetch" href="/golang-study-notes/assets/js/13.7edf5748.js"><link rel="prefetch" href="/golang-study-notes/assets/js/14.54a296ac.js"><link rel="prefetch" href="/golang-study-notes/assets/js/15.72ff923a.js"><link rel="prefetch" href="/golang-study-notes/assets/js/16.752ece8d.js"><link rel="prefetch" href="/golang-study-notes/assets/js/17.c4f75e3f.js"><link rel="prefetch" href="/golang-study-notes/assets/js/18.798fd506.js"><link rel="prefetch" href="/golang-study-notes/assets/js/19.15203b9d.js"><link rel="prefetch" href="/golang-study-notes/assets/js/20.326c14b0.js"><link rel="prefetch" href="/golang-study-notes/assets/js/22.832f5a2a.js"><link rel="prefetch" href="/golang-study-notes/assets/js/3.2a4fae10.js"><link rel="prefetch" href="/golang-study-notes/assets/js/4.11957e18.js"><link rel="prefetch" href="/golang-study-notes/assets/js/5.048c6337.js"><link rel="prefetch" href="/golang-study-notes/assets/js/6.29f38f88.js"><link rel="prefetch" href="/golang-study-notes/assets/js/7.e543a43a.js"><link rel="prefetch" href="/golang-study-notes/assets/js/8.d7ac58b8.js"><link rel="prefetch" href="/golang-study-notes/assets/js/9.3f6c58fc.js">
+    <link rel="stylesheet" href="/golang-study-notes/assets/css/0.styles.cf422793.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/golang-study-notes/" class="home-link router-link-active"><!----> <span class="site-name">Go 语言学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>开始</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/getStarted/install.html" class="sidebar-link">安装</a></li><li><a href="/golang-study-notes/getStarted/helloWorld.html" class="sidebar-link">运行你的第一个程序</a></li><li><a href="/golang-study-notes/getStarted/package.html" class="sidebar-link">go 中的package</a></li><li><a href="/golang-study-notes/getStarted/mod.html" class="sidebar-link">模块管理 / module maintenance</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>常用基础库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/packages/fmt.html" class="sidebar-link">fmt</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>语法</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/syntax/variation.html" class="sidebar-link">变量/Variation</a></li><li><a href="/golang-study-notes/syntax/constant.html" aria-current="page" class="active sidebar-link">常量/Constant</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/dataTypes/" class="sidebar-heading clickable"><span>数据类型</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/dataTypes/Integer.html" class="sidebar-link">整数/Integer</a></li><li><a href="/golang-study-notes/dataTypes/Float.html" class="sidebar-link">浮点数/Float</a></li><li><a href="/golang-study-notes/dataTypes/Array.html" class="sidebar-link">数组/Array</a></li><li><a href="/golang-study-notes/dataTypes/Slice.html" class="sidebar-link">切片/Slice</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/concurrency/" class="sidebar-heading clickable"><span>并发</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/concurrency/Goroutine.html" class="sidebar-link">Go程/Gorouttine</a></li><li><a href="/golang-study-notes/concurrency/Channels.html" class="sidebar-link">信道/Channels</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="常量-constant"><a href="#常量-constant" class="header-anchor">#</a> 常量/Constant</h1> <p>常量指不可修改的值，程序在编译阶段就可以知晓。</p> <h2 id="定义常量"><a href="#定义常量" class="header-anchor">#</a> 定义常量</h2> <p>常量的定义用关键字<code>const</code></p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 定义常量PI，类型为float32，值是3.1415926</span>
+<span class="token keyword">const</span> PI <span class="token builtin">float32</span> <span class="token operator">=</span> <span class="token number">3.1415926</span> 
+
+<span class="token comment">// 同时定义多个常量</span>
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+  A <span class="token operator">=</span> <span class="token number">10</span>
+  B <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="内置常量"><a href="#内置常量" class="header-anchor">#</a> 内置常量</h2> <p>Go 中预先定义了几个常量：<code>true</code>,<code>false</code>和<code>iota</code>
+其中<code>true</code>和<code>false</code>用于<code>bool类型</code>的取值
+<code>iota</code>是一个自增常量，其作用是在一个const定义域内，iota每出现一次，其自身的值会自增1，从0开始取值</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">const</span> <span class="token punctuation">(</span>
+    None <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值0</span>
+    Monday <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值1</span>
+    Tuesday <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值2</span>
+    Wednesday <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值3</span>
+    Thusday <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值4</span>
+    Friday <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值5</span>
+    Saturday <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值6</span>
+    Sunday <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值7</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    c1 <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token operator">*</span> <span class="token number">26</span> <span class="token comment">// 取值0</span>
+    c2 <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token operator">*</span> <span class="token number">26</span> <span class="token comment">// 取值26</span>
+    c3 <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token operator">*</span> <span class="token number">26</span> <span class="token comment">// 取值52</span>
+<span class="token punctuation">)</span>
+</code></pre></div><p>如果在const定义域内的每个iota常量表达式是一样的，可以进行简写
+例子：定义简写自增常量</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">const</span> <span class="token punctuation">(</span>
+    None <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token comment">// 取值0</span>
+    Monday <span class="token comment">// 取值1</span>
+    Tuesday <span class="token comment">// 取值2</span>
+    Wednesday <span class="token comment">// 取值3</span>
+    Thusday <span class="token comment">// 取值4</span>
+    Friday <span class="token comment">// 取值5</span>
+    Saturday <span class="token comment">// 取值6</span>
+    Sunday <span class="token comment">// 取值7</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    c1 <span class="token operator">=</span> <span class="token boolean">iota</span> <span class="token operator">*</span> <span class="token number">26</span> <span class="token comment">// 取值0</span>
+    c2 <span class="token comment">// 取值26</span>
+    c3 <span class="token comment">// 取值52</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h2 id="用常量表示枚举"><a href="#用常量表示枚举" class="header-anchor">#</a> 用常量表示枚举</h2> <p>Go 中没有枚举，通常用常量实现枚举效果</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">const</span> <span class="token punctuation">(</span>
+    OrderDesc <span class="token operator">=</span> <span class="token string">&quot;desc&quot;</span>
+    OrderAsc <span class="token operator">=</span> <span class="token string">&quot;asc&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">(</span>
+    HTTPStatusCodeSucceed <span class="token operator">=</span> <span class="token number">200</span>
+    HTTPStatusCodeUnauthorized <span class="token operator">=</span> <span class="token number">401</span>
+    HTTPStatusCodeNotFound <span class="token operator">=</span> <span class="token number">404</span>
+<span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/golang-study-notes/syntax/variation.html" class="prev">
+        变量/Variation
+      </a></span> <span class="next"><a href="/golang-study-notes/dataTypes/Integer.html">
+        整数/Integer
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/golang-study-notes/assets/js/app.2cd4efd2.js" defer></script><script src="/golang-study-notes/assets/js/2.3c2e6582.js" defer></script><script src="/golang-study-notes/assets/js/21.853ef5c6.js" defer></script>
+  </body>
+</html>

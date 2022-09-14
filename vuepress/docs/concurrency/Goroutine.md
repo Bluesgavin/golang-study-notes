@@ -1,4 +1,4 @@
-# Go程 / Gorouttine
+# Go程/Gorouttine
  
 Go 程（goroutine）是由 Go 运行时管理的轻量级线程。
 
