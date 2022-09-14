@@ -1,0 +1,36 @@
+# 安装
+
+## 下载地址
+[https://go.dev/dl/](https://go.dev/dl/)
+
+## 安装配置
+你可以用源码编译的方式安装。但一般建议用官方提供的安装包安装。
+
+### Window系统
+window系统的安装很简单，只有下载好安装包，执行安装即可。
+
+### Linux系统
+Linxt系统的安装分为两步：
+1. 下载官方提供的包
+2. 把包里可执行文件添加到环境变量中
+
+以安装1.19.1版本为例，具体操作示范：
+```bash
+// 下载安装包
+wget https://go.dev/dl/go1.19.1.linux-amd64.tar.gz
+// 如果有旧版本，先删除旧版本
+rm -rf /usr/local/go
+// 解压包到local路径
+tar -C /usr/local -xzf go1.19.1.linux-amd64.tar.gz
+```
+接下来添加环境变量，编辑 `$HOME/.profile` 或 `/etc/profile`文件,加入这句命令：
+``` bash
+export PATH=$PATH:/usr/local/go/bin
+```
+重新打开终端
+
+## 校验
+执行命令，确认是否安装成功
+```bash
+go version
+```

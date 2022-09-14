@@ -1,9 +1,26 @@
 module.exports = {
-  base:'/golang-study-notes/',
+  base: '/golang-study-notes/',
   title: 'Go 语言学习笔记',
   description: 'Just playing around',
   themeConfig: {
     sidebar: [
+      {
+        title: '开始',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: [
+          '/getStarted/install.md',
+          '/getStarted/helloWorld.md',
+          '/getStarted/package.md',
+        ],
+      },
+      {
+        title: '常用基础库',
+        path: '/packages/',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: ['/packages/fmt.md'],
+      },
       {
         title: '数据类型', // 必要的
         path: '/dataTypes/', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
