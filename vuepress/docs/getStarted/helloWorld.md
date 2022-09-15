@@ -26,6 +26,14 @@ go run ./hello.go
 $ go run ./hello.go
 Hello World!
 ```
+你还可以把源码打包成可执行文件，再执行。
+```bash
+go build ./hello.go
+# 执行构建出来的文件
+./hello
+# 如果是Window系统，执行的是.exe文件
+./hello.exe
+```
 
 ## 分析代码
 现在回头来看看，刚刚我们写的`hello.go`实际上做了些什么。

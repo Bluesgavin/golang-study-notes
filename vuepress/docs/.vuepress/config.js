@@ -42,7 +42,6 @@ module.exports = {
           '/dataTypes/Array.md',
           '/dataTypes/Slice.md',
           '/dataTypes/Map.md',
-
         ],
       },
       {
@@ -53,7 +52,14 @@ module.exports = {
         children: ['/concurrency/Goroutine.md', '/concurrency/Channels.md'],
         initialOpenGroupIndex: -1, // 可选的, 默认值是 0
       },
+      {
+        title: '工程开发',
+        path: '/development/',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: ['/development/structure.md'],
+        initialOpenGroupIndex: -1, // 可选的, 默认值是 0
+      },
     ],
   },
 };
-

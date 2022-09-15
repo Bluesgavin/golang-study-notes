@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>项目结构 | Go语言学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/golang-study-notes/favicon.ico">
+    <meta name="description" content="Go 语言学习笔记">
+    
+    <link rel="preload" href="/golang-study-notes/assets/css/0.styles.25ede89d.css" as="style"><link rel="preload" href="/golang-study-notes/assets/js/app.20bb5b04.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/2.2872e7ef.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/22.dad532bc.js" as="script"><link rel="prefetch" href="/golang-study-notes/assets/js/10.6d3a4ac7.js"><link rel="prefetch" href="/golang-study-notes/assets/js/11.a2ccc8d8.js"><link rel="prefetch" href="/golang-study-notes/assets/js/12.ea1e6a6d.js"><link rel="prefetch" href="/golang-study-notes/assets/js/13.b4ca1be7.js"><link rel="prefetch" href="/golang-study-notes/assets/js/14.f6a372e3.js"><link rel="prefetch" href="/golang-study-notes/assets/js/15.356f58a0.js"><link rel="prefetch" href="/golang-study-notes/assets/js/16.a072b0c5.js"><link rel="prefetch" href="/golang-study-notes/assets/js/17.5099b79f.js"><link rel="prefetch" href="/golang-study-notes/assets/js/18.8c5fd294.js"><link rel="prefetch" href="/golang-study-notes/assets/js/19.433df632.js"><link rel="prefetch" href="/golang-study-notes/assets/js/20.74f6ca74.js"><link rel="prefetch" href="/golang-study-notes/assets/js/21.ecd8b81b.js"><link rel="prefetch" href="/golang-study-notes/assets/js/23.07c6b1c9.js"><link rel="prefetch" href="/golang-study-notes/assets/js/24.3d7b77ca.js"><link rel="prefetch" href="/golang-study-notes/assets/js/25.5cfe5c24.js"><link rel="prefetch" href="/golang-study-notes/assets/js/26.8c9f4dcb.js"><link rel="prefetch" href="/golang-study-notes/assets/js/27.522875d2.js"><link rel="prefetch" href="/golang-study-notes/assets/js/28.911b8043.js"><link rel="prefetch" href="/golang-study-notes/assets/js/3.4b83a1a0.js"><link rel="prefetch" href="/golang-study-notes/assets/js/4.54bcda11.js"><link rel="prefetch" href="/golang-study-notes/assets/js/5.15454a28.js"><link rel="prefetch" href="/golang-study-notes/assets/js/6.cffe8b8c.js"><link rel="prefetch" href="/golang-study-notes/assets/js/7.7ca3b487.js"><link rel="prefetch" href="/golang-study-notes/assets/js/8.fb851661.js"><link rel="prefetch" href="/golang-study-notes/assets/js/9.11ccde5c.js">
+    <link rel="stylesheet" href="/golang-study-notes/assets/css/0.styles.25ede89d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/golang-study-notes/" class="home-link router-link-active"><!----> <span class="site-name">Go语言学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>开始</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/getStarted/install.html" class="sidebar-link">安装</a></li><li><a href="/golang-study-notes/getStarted/helloWorld.html" class="sidebar-link">运行你的第一个程序</a></li><li><a href="/golang-study-notes/getStarted/package.html" class="sidebar-link">包/package</a></li><li><a href="/golang-study-notes/getStarted/mod.html" class="sidebar-link">模块管理/module maintenance</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>常用基础库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/packages/fmt.html" class="sidebar-link">fmt</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>语法</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/syntax/variation.html" class="sidebar-link">变量/Variation</a></li><li><a href="/golang-study-notes/syntax/constant.html" class="sidebar-link">常量/Constant</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/dataTypes/" class="sidebar-heading clickable"><span>数据类型</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/dataTypes/Integer.html" class="sidebar-link">整数/Integer</a></li><li><a href="/golang-study-notes/dataTypes/Float.html" class="sidebar-link">浮点数/Float</a></li><li><a href="/golang-study-notes/dataTypes/ComplexNumbers.html" class="sidebar-link">复合数字类型/Complex Numbers</a></li><li><a href="/golang-study-notes/dataTypes/Boolean.html" class="sidebar-link">布尔型/Boolean</a></li><li><a href="/golang-study-notes/dataTypes/Strings.html" class="sidebar-link">字符/Strings</a></li><li><a href="/golang-study-notes/dataTypes/Array.html" class="sidebar-link">数组/Array</a></li><li><a href="/golang-study-notes/dataTypes/Slice.html" class="sidebar-link">切片/Slice</a></li><li><a href="/golang-study-notes/dataTypes/Map.html" class="sidebar-link">字典/Map</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/concurrency/" class="sidebar-heading clickable"><span>并发</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/concurrency/Goroutine.html" class="sidebar-link">Go程/Gorouttine</a></li><li><a href="/golang-study-notes/concurrency/Channels.html" class="sidebar-link">信道/Channels</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/development/" class="sidebar-heading clickable router-link-active open"><span>工程开发</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/development/structure.html" aria-current="page" class="active sidebar-link">项目结构</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="项目结构"><a href="#项目结构" class="header-anchor">#</a> 项目结构</h1> <p>Go 目前并没有官方的项目结构，我们可以参考社区的常用结构</p> <h2 id="可执行项目-应用-结构"><a href="#可执行项目-应用-结构" class="header-anchor">#</a> 可执行项目（应用）结构</h2> <div class="language- extra-class"><pre class="language-text"><code>exe-layout
+├── cmd/
+│     ├──app1/
+│     │    └── main.go
+│     └──app2/
+│          └── main.go
+├── go.mod
+├── go.sum
+├── internal/
+│     ├── pkga/
+│     │    └── pkg_a.go
+│     └── pkgb/
+│          └── pkg_b.go
+├── pkg1/
+│    └── pkg1.go
+├── pkg2/
+│    └── pkg2.go
+└── vendor/
+</code></pre></div><h2 id="库项目结构"><a href="#库项目结构" class="header-anchor">#</a> 库项目结构</h2> <div class="language- extra-class"><pre class="language-text"><code>lib-layout
+│
+├── go.mod
+├── go.sum
+├── internal/
+│     ├── pkga/
+│     │    └── pkg_a.go
+│     └── pkgb/
+│          └── pkg_b.go
+├── pkg1/
+│    └── pkg1.go
+└── pkg2/
+     └── pkg2.go
+</code></pre></div><h2 id="目录解释"><a href="#目录解释" class="header-anchor">#</a> 目录解释</h2> <ul><li><strong>cmd 目录</strong>: 存放项目要编译构建的可执行文件所对应的 main 包的源码文件；</li> <li><strong>项目包(pkgN)</strong>: 每个项目下的非 main 包都“平铺”在项目的根目录下，每个目录对应一个 Go 包；</li> <li><strong>internal 目录</strong>：存放仅项目内部引用的 Go 包，这些包无法被项目之外引用；</li> <li><strong>vendor 目录</strong>：这是一个可选目录，为了兼容 Go 1.5 引入的 vendor 构建模式而存在的。这个目录下的内容均由 Go 命令自动维护，不需要开发者手工干预。</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/golang-study-notes/concurrency/Channels.html" class="prev">
+        信道/Channels
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/golang-study-notes/assets/js/app.20bb5b04.js" defer></script><script src="/golang-study-notes/assets/js/2.2872e7ef.js" defer></script><script src="/golang-study-notes/assets/js/22.dad532bc.js" defer></script>
+  </body>
+</html>
