@@ -42,6 +42,11 @@ module.exports = {
           '/dataTypes/Array.md',
           '/dataTypes/Slice.md',
           '/dataTypes/Map.md',
+          '/dataTypes/Type.md',
+          '/dataTypes/Struct.md',
+          '/dataTypes/If.md',
+          '/dataTypes/Switch.md',
+          '/dataTypes/For.md',
         ],
       },
       {
