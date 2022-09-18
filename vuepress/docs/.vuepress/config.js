@@ -26,7 +26,13 @@ module.exports = {
         title: '语法',
         collapsable: false,
         sidebarDepth: 0,
-        children: ['/syntax/variation.md', '/syntax/constant.md'],
+        children: [
+          '/syntax/variation.md',
+          '/syntax/constant.md',
+          '/syntax/If.md',
+          '/syntax/Switch.md',
+          '/syntax/For.md',
+        ],
       },
       {
         title: '数据类型', // 必要的
@@ -44,9 +50,6 @@ module.exports = {
           '/dataTypes/Map.md',
           '/dataTypes/Type.md',
           '/dataTypes/Struct.md',
-          '/dataTypes/If.md',
-          '/dataTypes/Switch.md',
-          '/dataTypes/For.md',
         ],
       },
       {
