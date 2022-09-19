@@ -50,6 +50,7 @@ module.exports = {
           '/dataTypes/Map.md',
           '/dataTypes/Type.md',
           '/dataTypes/Struct.md',
+          '/dataTypes/Function.md',
         ],
       },
       {
