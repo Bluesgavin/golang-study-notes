@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>异常/Panic | Go语言学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/golang-study-notes/favicon.ico">
+    <meta name="description" content="Go 语言学习笔记">
+    
+    <link rel="preload" href="/golang-study-notes/assets/css/0.styles.25ede89d.css" as="style"><link rel="preload" href="/golang-study-notes/assets/js/app.6b3674a2.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/2.2872e7ef.js" as="script"><link rel="preload" href="/golang-study-notes/assets/js/9.781f2a00.js" as="script"><link rel="prefetch" href="/golang-study-notes/assets/js/10.ac711d35.js"><link rel="prefetch" href="/golang-study-notes/assets/js/11.c6d4b202.js"><link rel="prefetch" href="/golang-study-notes/assets/js/12.ea9af43e.js"><link rel="prefetch" href="/golang-study-notes/assets/js/13.1455cdd2.js"><link rel="prefetch" href="/golang-study-notes/assets/js/14.399b473b.js"><link rel="prefetch" href="/golang-study-notes/assets/js/15.5e4bf6d6.js"><link rel="prefetch" href="/golang-study-notes/assets/js/16.ab58a6ed.js"><link rel="prefetch" href="/golang-study-notes/assets/js/17.5c0eb5ea.js"><link rel="prefetch" href="/golang-study-notes/assets/js/18.201761aa.js"><link rel="prefetch" href="/golang-study-notes/assets/js/19.1125f8da.js"><link rel="prefetch" href="/golang-study-notes/assets/js/20.b91c8deb.js"><link rel="prefetch" href="/golang-study-notes/assets/js/21.c0f0f50f.js"><link rel="prefetch" href="/golang-study-notes/assets/js/22.7edbe6c2.js"><link rel="prefetch" href="/golang-study-notes/assets/js/23.adcc2431.js"><link rel="prefetch" href="/golang-study-notes/assets/js/24.b11196d4.js"><link rel="prefetch" href="/golang-study-notes/assets/js/25.6a77e419.js"><link rel="prefetch" href="/golang-study-notes/assets/js/26.d5135ff0.js"><link rel="prefetch" href="/golang-study-notes/assets/js/27.0c3c4958.js"><link rel="prefetch" href="/golang-study-notes/assets/js/28.9931f18f.js"><link rel="prefetch" href="/golang-study-notes/assets/js/29.c565f74f.js"><link rel="prefetch" href="/golang-study-notes/assets/js/3.730634c8.js"><link rel="prefetch" href="/golang-study-notes/assets/js/30.28a4772a.js"><link rel="prefetch" href="/golang-study-notes/assets/js/31.c745334c.js"><link rel="prefetch" href="/golang-study-notes/assets/js/32.102e4572.js"><link rel="prefetch" href="/golang-study-notes/assets/js/33.33b41d56.js"><link rel="prefetch" href="/golang-study-notes/assets/js/34.3d29c89f.js"><link rel="prefetch" href="/golang-study-notes/assets/js/35.f24f1b15.js"><link rel="prefetch" href="/golang-study-notes/assets/js/36.fbd0c2c1.js"><link rel="prefetch" href="/golang-study-notes/assets/js/37.4be27faa.js"><link rel="prefetch" href="/golang-study-notes/assets/js/4.54bcda11.js"><link rel="prefetch" href="/golang-study-notes/assets/js/5.15454a28.js"><link rel="prefetch" href="/golang-study-notes/assets/js/6.391230e6.js"><link rel="prefetch" href="/golang-study-notes/assets/js/7.7ca3b487.js"><link rel="prefetch" href="/golang-study-notes/assets/js/8.63e1564c.js">
+    <link rel="stylesheet" href="/golang-study-notes/assets/css/0.styles.25ede89d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/golang-study-notes/" class="home-link router-link-active"><!----> <span class="site-name">Go语言学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>开始</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/getStarted/install.html" class="sidebar-link">安装</a></li><li><a href="/golang-study-notes/getStarted/helloWorld.html" class="sidebar-link">运行你的第一个程序</a></li><li><a href="/golang-study-notes/getStarted/package.html" class="sidebar-link">包/package</a></li><li><a href="/golang-study-notes/getStarted/mod.html" class="sidebar-link">模块管理/module maintenance</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>常用基础库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/packages/fmt.html" class="sidebar-link">fmt</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>语法</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/syntax/variation.html" class="sidebar-link">变量/Variation</a></li><li><a href="/golang-study-notes/syntax/constant.html" class="sidebar-link">常量/Constant</a></li><li><a href="/golang-study-notes/syntax/If.html" class="sidebar-link">条件判断/If</a></li><li><a href="/golang-study-notes/syntax/Switch.html" class="sidebar-link">条件控制/Switch</a></li><li><a href="/golang-study-notes/syntax/For.html" class="sidebar-link">循环/For</a></li><li><a href="/golang-study-notes/syntax/Method.html" class="sidebar-link">方法/Method</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/dataTypes/" class="sidebar-heading clickable"><span>数据类型</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/dataTypes/Integer.html" class="sidebar-link">整数/Integer</a></li><li><a href="/golang-study-notes/dataTypes/Float.html" class="sidebar-link">浮点数/Float</a></li><li><a href="/golang-study-notes/dataTypes/ComplexNumbers.html" class="sidebar-link">复合数字类型/Complex Numbers</a></li><li><a href="/golang-study-notes/dataTypes/Boolean.html" class="sidebar-link">布尔型/Boolean</a></li><li><a href="/golang-study-notes/dataTypes/Strings.html" class="sidebar-link">字符/Strings</a></li><li><a href="/golang-study-notes/dataTypes/Array.html" class="sidebar-link">数组/Array</a></li><li><a href="/golang-study-notes/dataTypes/Slice.html" class="sidebar-link">切片/Slice</a></li><li><a href="/golang-study-notes/dataTypes/Map.html" class="sidebar-link">字典/Map</a></li><li><a href="/golang-study-notes/dataTypes/Type.html" class="sidebar-link">自定义类型/Type</a></li><li><a href="/golang-study-notes/dataTypes/Struct.html" class="sidebar-link">结构体/Struct</a></li><li><a href="/golang-study-notes/dataTypes/Function.html" class="sidebar-link">函数/Function</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/Error/" class="sidebar-heading clickable router-link-active open"><span>错误与异常</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/Error/ErrorHandling.html" class="sidebar-link">错误处理</a></li><li><a href="/golang-study-notes/Error/Panic.html" aria-current="page" class="active sidebar-link">异常/Panic</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/concurrency/" class="sidebar-heading clickable"><span>并发</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/concurrency/Goroutine.html" class="sidebar-link">Go程/Gorouttine</a></li><li><a href="/golang-study-notes/concurrency/Channels.html" class="sidebar-link">信道/Channels</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/golang-study-notes/development/" class="sidebar-heading clickable"><span>工程开发</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/golang-study-notes/development/structure.html" class="sidebar-link">项目结构</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="异常-panic"><a href="#异常-panic" class="header-anchor">#</a> 异常/Panic</h1> <p>前面我们讲了 GO 中的错误处理，但我还需要强调一点： <strong>错误不是异常</strong>。<br>
+GO 中异常触发后，假如没有被捕获，Go 程序就会终止，即便出现异常的位置不在主 Goroutine 中也会终止。</p> <p>在 Go 中 ， panic 主要有两类来源，一类是来自 Go 运行时 ， 另一类则是 Go 开发人员通 过 panic 函数主动触发的 。 无论是哪种，一旦 panic 被触发，后续 Go 程序的执行过程都 是一样的，这个过程被 Go 语言称为 panicking 。</p> <h2 id="panic-的触发"><a href="#panic-的触发" class="header-anchor">#</a> panic 的触发</h2> <p>我们可以用 <code>panic</code> 主动触发一个异常，异常触发后 GO 会停止执行函数剩下的内容，逐级往上退出。<br>
+举个例子：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> one <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;1-1&quot;</span><span class="token punctuation">)</span>
+  <span class="token function">two</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;1-2&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">two</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-1&quot;</span><span class="token punctuation">)</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-2&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;0-1&quot;</span><span class="token punctuation">)</span>
+  <span class="token function">one</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;0-2&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>正常情况这段代码的执行输出应该是这样：</p> <div class="language- extra-class"><pre class="language-text"><code>0-1
+1-1
+2-1
+2-2
+1-2
+0-2
+</code></pre></div><p>但如果我们在 two 中加入了 panic</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">two</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-1&quot;</span><span class="token punctuation">)</span>
+  <span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;panic occurs in two&quot;</span><span class="token punctuation">)</span>
+  <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-2&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>输出就会变为：</p> <div class="language- extra-class"><pre class="language-text"><code>0-1
+1-1
+2-1
+</code></pre></div><p>观察代码我们可以发现两点：</p> <ol><li>panic 触发后，同函数后续代码不会继续执行</li> <li>panic 调用时，可以传入异常提示信息。</li></ol> <h2 id="panic-中的-defer"><a href="#panic-中的-defer" class="header-anchor">#</a> panic 中的 defer</h2> <p>现在我们知道了 panic 会阻止函数继续执行，但其实有一种情况是特殊的，就是 defer 函数。<br>
+继续修改 two 函数代码</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">two</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-3&quot;</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-1&quot;</span><span class="token punctuation">)</span>
+	<span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;panicoccursinbar&quot;</span><span class="token punctuation">)</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-2&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>输出结果为：</p> <div class="language- extra-class"><pre class="language-text"><code>0-1
+1-1
+2-1
+2-3
+</code></pre></div><p>可以看到 <code>2-3</code> 也被输出了。</p> <h2 id="通过-recover-捕获-panic"><a href="#通过-recover-捕获-panic" class="header-anchor">#</a> 通过 recover 捕获 panic</h2> <p>通过上面例子，我们知道了 defer 可以说是 panic 触发之后的最后出口。那我们是否可以在这里捕获异常，甚至修复呢？答案是肯定的，它就是 recover 函数。<br>
+recover 是 Go 内置的专门用于恢复 panic 的函数， 它必须被放在一个 defer 函数 中才能生效。 如果 recover 捕捉到 panic ， 它就会返回以 panic 的具体内容为错误上下文 信息的错误值。 如果没有 panic 发生，那么 recover 将返回 nil。 而且，如果 panic 被 recover 捕捉到 ， panic 引发的 panicking 过程就会停止。
+我们继续修改 two 函数代码：</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">two</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> e<span class="token operator">:=</span> <span class="token function">recover</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>e <span class="token operator">!=</span> <span class="token boolean">nil</span><span class="token punctuation">{</span>
+      fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;recover the panic: &quot;</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-1&quot;</span><span class="token punctuation">)</span>
+	<span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;panicoccursinbar&quot;</span><span class="token punctuation">)</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;2-2&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>输出就会变为</p> <div class="language- extra-class"><pre class="language-text"><code>0-1
+1-1
+2-1
+recover the panic: (0x46c100,0x493180)
+1-2
+0-2
+</code></pre></div><p>可以看到不仅 two 函数之后内容正常执行了，panic 也被捕获到了。</p> <h2 id="用-panic-提示潜在-bug"><a href="#用-panic-提示潜在-bug" class="header-anchor">#</a> 用 panic 提示潜在 bug</h2> <p>panic 是主动触发异常的方法，但是为什么开发者要主动这么做呢？其中，提示 bug 就是一个很好的例子。<br>
+我们的开发时写的函数，不仅是自己在用，很多时候会被别人调用。我们不能完全依赖文档，需要考虑到用户有可能在没有阅读过文档的前提下使用我们的函数，因此一个开发使用上的提示就很有必要了。通过 panic 我们可以实现这样的代码：</p> <div class="language-go extra-class"><pre class="language-go"><code>  <span class="token keyword">switch</span> a<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword">type</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+      <span class="token comment">//...</span>
+    <span class="token keyword">case</span> <span class="token builtin">string</span><span class="token punctuation">:</span>
+      <span class="token comment">//...</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token comment">// 如果a不是int或者string就用panic提示</span>
+      <span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;a must be int or string&quot;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/golang-study-notes/Error/ErrorHandling.html" class="prev">
+        错误处理
+      </a></span> <span class="next"><a href="/golang-study-notes/concurrency/Goroutine.html">
+        Go程/Gorouttine
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/golang-study-notes/assets/js/app.6b3674a2.js" defer></script><script src="/golang-study-notes/assets/js/2.2872e7ef.js" defer></script><script src="/golang-study-notes/assets/js/9.781f2a00.js" defer></script>
+  </body>
+</html>

@@ -32,6 +32,7 @@ module.exports = {
           '/syntax/If.md',
           '/syntax/Switch.md',
           '/syntax/For.md',
+          '/syntax/Method.md',
         ],
       },
       {
@@ -53,6 +54,17 @@ module.exports = {
           '/dataTypes/Function.md',
         ],
       },
+            {
+        title: '错误与异常',
+        path: '/Error/',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: [
+          '/Error/ErrorHandling.md',
+          '/Error/Panic.md'
+        ],
+      },
+      
       {
         title: '并发',
         path: '/concurrency/',
