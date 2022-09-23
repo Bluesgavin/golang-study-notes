@@ -25,9 +25,10 @@ m1 = make(map[string]string)
 var m2 = make(map[string][]int)
 ```
 
-
 ## 字典读写
-字典内容可动态增删，通过键名可对字典进行索引，做赋值或读取操作，使用len()方法可获取字典长度
+
+字典内容可动态增删，通过键名可对字典进行索引，做赋值或读取操作，使用 len()方法可获取字典长度
+
 ```go
 package main
 
@@ -38,11 +39,11 @@ import (
 func main() {
 	var m1 map[string]string
 	m1 = make(map[string]string)
-	
+
 	// 为字典赋值
 	m1["key1"] = "value1"
 	m1["key2"] = "value2"
-	
+
 	// 通过键名获取对应的值
 	fmt.Println(m1["key2"])
 
@@ -52,14 +53,58 @@ func main() {
 	fmt.Println(len(m1))
 }
 ```
+
 输出结果
+
 ```
 value2
 map[key1:value1 key2:value2]
 2
 ```
+
+## 判断某字段是否存在
+
+默认情况下，访问字典中不存在的字段时，Go 会默认返回零值。
+
+```go
+func main() {
+	m := make(map[int]int)
+	fmt.Println(m[2])
+
+	m1 := make(map[int]string)
+	fmt.Println(m1[1])
+}
+```
+
+输出结果
+
+```
+0
+""
+```
+
+因此如果你的业务需要判断字段是否存在，可以通过读取字典时返回的第二个值判断。
+
+```go
+func main() {
+  m := make(map[int]int)
+	v, ok := m[2]
+	if ok {
+		fmt.Println(v)
+	} else {
+		fmt.Println("can not find 2 in m")
+	}
+}
+```
+输出结果
+```
+can not find 2 in m
+```
+
 ## 字典元素删除
+
 通过内置方法`delete()`可以删除字典元素
+
 ```go
 package main
 
@@ -70,10 +115,10 @@ import (
 func main() {
 	var m1 map[string]string
 	m1 = make(map[string]string)
-	
+
 	m1["key1"] = "value1"
 	m1["key2"] = "value2"
-	
+
 	// 通过键名删除字典元素
 	delete(m1,"key1")
 
@@ -81,14 +126,18 @@ func main() {
 	fmt.Println(len(m1))
 }
 ```
+
 输出结果
+
 ```
 map[key2:value2]
 1
 ```
 
 ## 字典传递
+
 字典本身采用引用传递，它的变量值相当于一个指针。
+
 ```go
 package main
 
@@ -103,7 +152,9 @@ func main() {
 	fmt.Println(m2)
 }
 ```
-输出结果看到，m2也被改了，说明m2值是一个引用，不是m1的拷贝
+
+输出结果看到，m2 也被改了，说明 m2 值是一个引用，不是 m1 的拷贝
+
 ```
 map[hello:hi]
 ```

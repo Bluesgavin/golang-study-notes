@@ -54,17 +54,14 @@ module.exports = {
           '/dataTypes/Function.md',
         ],
       },
-            {
+      {
         title: '错误与异常',
         path: '/Error/',
         collapsable: false,
         sidebarDepth: 0,
-        children: [
-          '/Error/ErrorHandling.md',
-          '/Error/Panic.md'
-        ],
+        children: ['/Error/ErrorHandling.md', '/Error/Panic.md'],
       },
-      
+
       {
         title: '并发',
         path: '/concurrency/',
@@ -80,6 +77,13 @@ module.exports = {
         sidebarDepth: 0,
         children: ['/development/structure.md'],
         initialOpenGroupIndex: -1, // 可选的, 默认值是 0
+      },
+    ],
+    nav: [
+      {
+        text: 'GITHUB',
+        link: 'https://github.com/Bluesgavin/golang-study-notes',
+        logo: '/github.png'
       },
     ],
   },
