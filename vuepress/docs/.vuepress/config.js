@@ -71,6 +71,14 @@ module.exports = {
         initialOpenGroupIndex: -1, // 可选的, 默认值是 0
       },
       {
+        title: '设计',
+        path: '/design/',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: ['/design/Concurrency.md'],
+        initialOpenGroupIndex: -1, // 可选的, 默认值是 0
+      },
+      {
         title: '工程开发',
         path: '/development/',
         collapsable: false,
