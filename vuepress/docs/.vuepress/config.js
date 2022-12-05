@@ -20,7 +20,7 @@ module.exports = {
         title: '常用基础库',
         collapsable: false,
         sidebarDepth: 0,
-        children: ['/packages/fmt.md'],
+        children: ['/packages/fmt.md','/packages/http.md'],
       },
       {
         title: '语法',
@@ -84,6 +84,14 @@ module.exports = {
         collapsable: false,
         sidebarDepth: 0,
         children: ['/development/structure.md'],
+        initialOpenGroupIndex: -1, // 可选的, 默认值是 0
+      },
+        {
+        title: '练习项目',
+        path: '/projects/',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: ['/projects/web.md'],
         initialOpenGroupIndex: -1, // 可选的, 默认值是 0
       },
     ],
