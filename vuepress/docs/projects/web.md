@@ -2,6 +2,9 @@
 
 本文我们将尝试基于 `net/http` 库开发一个简单的 WEB 框架，开始之前你需要了解`net/http` 库的基本用法([你可以点击此处跳转](/packages/http.md))。
 
+## 完整代码
+本文的完整代码可以在此仓库查看[https://github.com/Bluesgavin/go-web](https://github.com/Bluesgavin/go-web)
+
 ## 基础实现
 
 假如我们现在有一个业务常见，需要启动一个 Web 应用，可以实现图书仓库的增删改查接口。假如使用 `net/http` 基础库，代码的轮廓大致如下：
@@ -148,7 +151,8 @@ func main() {
 目前为止，我们只是简单地把代码封装了一下。但我们的框架功能不能仅仅如此，还需要考虑：         
 1. 支持POST，PUT，DELETE等其他请求方式。
 2. 支持中间件功能
-3. 路由优化
+3. 路由优化,采用路由树管理路由
+4. 支持通用路由——`*`
 
 
 #### 中间件效果设计
@@ -157,10 +161,11 @@ func main() {
 #### 路由设计
 我们加入一个新的 `Router` 模块,主要负责路由的定于与查找。这里我们可以用 “树状” 结构实现。
 
+#### 通用路由
+有时候，我们需要配置通用路由，格式为`book/*`。这种路由可以触发 book下的所以子路由函数。要实现这种效果，我们需要在路由的搜索上作节点类型的判断。
+
 #### 整体思路
 综上考虑，我们可以得出我们的设计模型：                
 ![showcase](./images/showcase.png)                  
 框架暴露一个 `Server` 模块，`Server` 下有 `handler` 和 `fnc` 。其中 `fnc` 是通过中间件封装后的执行函数。在图中绿色线为请求的执行路径，`Server` 接收到请求后会交给 `handler` 处理，而 `handler` 下有一个 router 模块，它会判断请求的 `url` 和 `method` ，如果找到对应注册过的函数，就会生成一个新的 `Context` 并带入 `fnc` 中执行。
 
-#### 完整代码
-完整代码可以在此仓库查看[https://github.com/Bluesgavin/go-web](https://github.com/Bluesgavin/go-web)
