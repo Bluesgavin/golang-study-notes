@@ -113,15 +113,17 @@ func mvDocs() {
 	}
 	fmt.Printf("DocsPath: %s\n", aDocsPath)
 	fmt.Printf("DistPath: %s\n", aDistPath)
-	printLine("build docs START")
+	printLine("empty docs START")
 	emptyDir(aDocsPath)
-	printLine("build docs END")
+	printLine("empty docs END")
 	printLine("copy dist START")
 	copyDir(aDistPath, aDocsPath)
 	printLine("copy dist END")
 }
 
 func main() {
-	// buildDocs()
+	printLine("build docs START")
+	buildDocs()
+	printLine("build docs START")
 	mvDocs()
 }
